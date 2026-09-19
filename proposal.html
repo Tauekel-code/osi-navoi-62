@@ -1,0 +1,196 @@
+<title>Предложение для Навои 62</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #10141b;
+    --ink-2: #171c26;
+    --ink-3: #1f2531;
+    --ink-line: #2a3140;
+    --ink-text: #eef0f4;
+    --ink-text-mute: #8791a3;
+    --amber: #f3a530;
+    --amber-2: #d9860f;
+    --amber-soft: rgba(243, 165, 48, 0.14);
+    --calm: #3fa772;
+    --font-display: 'Manrope', 'Segoe UI', sans-serif;
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--ink-text);
+    font-family: var(--font-body);
+    margin: 0;
+    padding-inline: 20px;
+    padding-block: 56px;
+  }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .lamp {
+    --size: 40px;
+    width: var(--size); height: var(--size); border-radius: 50%;
+    flex: none;
+    background: radial-gradient(circle at 35% 30%, #ffd27a, var(--amber) 55%, var(--amber-2) 100%);
+    box-shadow: 0 0 0 5px rgba(243,165,48,0.12), 0 0 22px 3px rgba(243,165,48,0.55);
+    animation: breathe 3.4s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) { .lamp { animation: none; } }
+  @keyframes breathe {
+    0%, 100% { box-shadow: 0 0 0 5px rgba(243,165,48,0.12), 0 0 16px 1px rgba(243,165,48,0.45); }
+    50% { box-shadow: 0 0 0 7px rgba(243,165,48,0.16), 0 0 26px 5px rgba(243,165,48,0.75); }
+  }
+
+  header.top {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 44px;
+  }
+  .top-text .eyebrow {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--amber); margin: 0 0 4px;
+  }
+  .top-text .house {
+    font-family: var(--font-display); font-weight: 800; font-size: 17px; margin: 0;
+  }
+
+  h1 {
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 5vw, 38px);
+    line-height: 1.18; letter-spacing: -0.01em; margin: 0 0 20px;
+    text-wrap: balance;
+  }
+
+  p.lead {
+    font-size: 16px; line-height: 1.65; color: var(--ink-text-mute); margin: 0 0 40px;
+    max-width: 58ch;
+  }
+
+  section { margin-bottom: 44px; }
+
+  h2 {
+    font-family: var(--font-display); font-weight: 700; font-size: 13px;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-text-mute);
+    margin: 0 0 18px;
+  }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+  .steps li {
+    display: flex; gap: 16px; padding-block: 16px;
+    border-top: 1px solid var(--ink-line);
+  }
+  .steps li:last-child { border-bottom: 1px solid var(--ink-line); }
+  .step-num {
+    font-family: var(--font-mono); font-weight: 600; font-size: 13px; color: var(--amber);
+    flex: none; width: 22px; padding-top: 2px;
+  }
+  .step-body p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-text); }
+
+  .benefits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .benefits li { display: flex; gap: 14px; align-items: flex-start; font-size: 15px; line-height: 1.55; }
+  .benefits .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--calm); flex: none; margin-top: 8px;
+    box-shadow: 0 0 6px 1px rgba(63,167,114,0.5);
+  }
+
+  .isolation-note {
+    background: var(--ink-2); border: 1px solid var(--ink-line); border-radius: 14px;
+    padding: 18px 20px; font-size: 14px; line-height: 1.6; color: var(--ink-text-mute);
+  }
+  .isolation-note strong { color: var(--ink-text); }
+
+  .cta-block {
+    text-align: center; padding: 40px 24px; margin-bottom: 36px;
+    background: var(--ink-2); border: 1px solid var(--ink-line); border-radius: 20px;
+  }
+  .cta-block p { margin: 0 0 20px; color: var(--ink-text-mute); font-size: 14px; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, var(--amber), var(--amber-2));
+    color: #1a1300; text-decoration: none; font-family: var(--font-display); font-weight: 800; font-size: 15px;
+    padding: 15px 28px; border-radius: 999px;
+    box-shadow: 0 12px 30px -10px rgba(243,165,48,0.5);
+  }
+  .cta-btn .arrow { transition: transform .15s; }
+  .cta-btn:hover .arrow { transform: translateX(3px); }
+  .cta-url {
+    display: block; margin-top: 14px; font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-text-mute);
+  }
+
+  footer {
+    text-align: center; font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-text-mute);
+    letter-spacing: 0.03em; padding-top: 12px;
+  }
+</style>
+
+<div class="page">
+
+  <header class="top">
+    <div class="lamp" aria-hidden="true"></div>
+    <div class="top-text">
+      <p class="eyebrow">Предложение</p>
+      <p class="house">ОСИ Навои 62, Алматы</p>
+    </div>
+  </header>
+
+  <h1>Заявки жителей — без хаоса в чатах и без вас на связи круглосуточно</h1>
+  <p class="lead">
+    Андрей, это отдельный Telegram-бот для жителей вашего дома и веб-панель для вас — не общая платформа на всех домах,
+    а ваша собственная изолированная копия. Ниже — как это работает и что меняется для вас на практике.
+  </p>
+
+  <section>
+    <h2>Как это работает</h2>
+    <ol class="steps">
+      <li>
+        <span class="step-num">01</span>
+        <div class="step-body"><p>Житель пишет боту обычными словами — «течёт кран» или «кто сегодня сантехник» — как обычному собеседнику в Telegram.</p></div>
+      </li>
+      <li>
+        <span class="step-num">02</span>
+        <div class="step-body"><p>Бот сам определяет категорию и срочность, уточняет подъезд или квартиру, если это важно и не указано.</p></div>
+      </li>
+      <li>
+        <span class="step-num">03</span>
+        <div class="step-body"><p>Создаётся заявка с номером, назначается ответственный — он получает уведомление сразу же.</p></div>
+      </li>
+      <li>
+        <span class="step-num">04</span>
+        <div class="step-body"><p>Вы открываете панель в браузере и видите все обращения дома целиком: категории, статусы, кто чем занят.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Что это даёт</h2>
+    <ul class="benefits">
+      <li><span class="dot"></span>Житель получает ответ за секунды — в любое время суток, а не когда вы освободитесь.</li>
+      <li><span class="dot"></span>Ни одна заявка не теряется в переписке — у каждой номер, статус и история.</li>
+      <li><span class="dot"></span>Вы видите картину по дому целиком, а не по кусочкам в разных чатах и звонках.</li>
+      <li><span class="dot"></span>При аварийной ситуации бот сразу даёт инструкцию и экстренный контакт, не дожидаясь вас.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="isolation-note">
+      <strong>Про приватность жителей:</strong> данные дома Навои 62 нигде не смешиваются с другими домами — у каждого ОСИ своя отдельная копия бота и базы. Собирается только то, что нужно для заявки: имя, квартира, телефон.
+    </div>
+  </section>
+
+  <div class="cta-block">
+    <p>Живое демо — без установки и регистрации, можно посмотреть прямо сейчас</p>
+    <a class="cta-btn" href="https://tauekel-code.github.io/osi-navoi-62/" target="_blank" rel="noopener">
+      Открыть демо <span class="arrow">→</span>
+    </a>
+    <span class="cta-url">tauekel-code.github.io/osi-navoi-62</span>
+  </div>
+
+  <footer>Подготовлено для ОСИ Навои 62</footer>
+
+</div>
