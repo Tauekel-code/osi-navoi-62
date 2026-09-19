@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Цифровой диспетчер — ОСИ Навои 62</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app" id="app" data-view="resident">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="lamp-mark" aria-hidden="true"></span>
+        <div class="brand-text">
+          <div class="brand-name" id="appName"></div>
+          <div class="brand-house" id="houseTag"></div>
+        </div>
+        <span class="badge" id="demoBadge"></span>
+      </div>
+      <div class="topbar-controls">
+        <div class="switch view-switch">
+          <button type="button" data-view="resident" class="active"></button>
+          <button type="button" data-view="chairman"></button>
+          <button type="button" data-view="staff"></button>
+        </div>
+        <div class="switch lang-switch">
+          <button type="button" data-lang="ru">RU</button>
+          <button type="button" data-lang="kz">KZ</button>
+        </div>
+        <button type="button" class="ghost-btn small" id="resetBtn"></button>
+      </div>
+    </header>
+
+    <main class="stage">
+
+      <section class="resident-view">
+        <div class="resident-layout">
+          <aside class="pitch-panel">
+            <h1 class="pitch-title" id="pitchTitle"></h1>
+            <p class="pitch-lead" id="pitchLead"></p>
+
+            <div class="pitch-examples" id="pitchExamples"></div>
+
+            <p class="pitch-hint" id="pitchHintViews"></p>
+          </aside>
+
+          <div class="phone">
+            <div class="phone-header">
+              <span class="lamp-mark small" aria-hidden="true"></span>
+              <div>
+                <div class="phone-title" id="chatTitle"></div>
+                <div class="phone-status" id="chatOnline"></div>
+              </div>
+            </div>
+
+            <div class="chat-window" id="chatWindow" aria-live="polite"></div>
+
+            <div class="quick-menu" id="quickMenu"></div>
+
+            <form class="composer" id="chatForm">
+              <button type="button" class="icon-btn" id="attachBtn">📎</button>
+              <input type="file" id="attachInput" accept="image/*" hidden>
+              <label class="sr-only" for="messageInput">Сообщение</label>
+              <textarea id="messageInput" rows="1"></textarea>
+              <button type="submit" id="sendBtn" class="send-btn"></button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="chairman-view">
+        <div class="stat-row">
+          <div class="stat-card" id="statNeedsAttention"><div class="stat-num">0</div><div class="stat-label"></div></div>
+          <div class="stat-card" id="statInProgress"><div class="stat-num">0</div><div class="stat-label"></div></div>
+          <div class="stat-card stat-warn" id="statOverdue"><div class="stat-num">0</div><div class="stat-label"></div></div>
+          <div class="stat-card" id="statClosedToday"><div class="stat-num">0</div><div class="stat-label"></div></div>
+          <button type="button" class="ai-summary-btn" id="aiSummaryBtn"></button>
+        </div>
+
+        <nav class="chair-tabs">
+          <button type="button" data-tab="board" class="active" id="tabBoardBtn"></button>
+          <button type="button" data-tab="directory" id="tabDirectoryBtn"></button>
+          <button type="button" data-tab="audit" id="tabAuditLabel"></button>
+        </nav>
+
+        <div class="chair-panel active" data-panel="board">
+          <div class="board-layout">
+            <div class="board-main">
+              <div class="filters">
+                <select id="filterCategory"></select>
+                <select id="filterStatus"></select>
+              </div>
+              <div class="req-list" id="requestsList"></div>
+            </div>
+            <aside class="board-side">
+              <h3 id="dutyTodayHeader"></h3>
+              <div class="duty-list" id="dutyList"></div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="chair-panel" data-panel="directory">
+          <div class="dir-grid">
+            <div class="dir-block">
+              <h3 id="directoryContactsLabel"></h3>
+              <div class="dir-list" id="contactsEditor"></div>
+              <form class="dir-add-form" id="contactAddForm">
+                <input id="contactLabelInput" required>
+                <input id="contactPhoneInput" required>
+                <button type="submit" id="contactAddBtn"></button>
+              </form>
+            </div>
+
+            <div class="dir-block">
+              <h3 id="directoryStaffLabel"></h3>
+              <div class="dir-list" id="staffEditor"></div>
+              <form class="dir-add-form" id="staffAddForm">
+                <input id="staffNameInput" required>
+                <input id="staffRoleInput" required>
+                <input id="staffPhoneInput" required>
+                <button type="submit" id="staffAddBtn"></button>
+              </form>
+            </div>
+
+            <div class="dir-block">
+              <h3 id="directoryFaqLabel"></h3>
+              <div class="dir-list" id="faqEditor"></div>
+              <form class="dir-add-form" id="faqAddForm">
+                <input id="faqQuestionInput" required>
+                <input id="faqAnswerInput" required>
+                <input id="faqKeywordsInput" required>
+                <button type="submit" id="faqAddBtn"></button>
+              </form>
+            </div>
+
+            <div class="dir-block">
+              <h3 id="directoryAnnouncementsLabel"></h3>
+              <div class="dir-list" id="announcementsEditor"></div>
+              <form class="dir-add-form" id="annAddForm">
+                <input id="annTitleInput" required>
+                <input id="annTextInput" required>
+                <input type="date" id="annDateInput">
+                <button type="submit" id="annAddBtn"></button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="chair-panel" data-panel="audit">
+          <div class="audit-list" id="auditList"></div>
+        </div>
+      </section>
+
+      <section class="staff-view">
+        <div class="staff-head">
+          <label for="staffPersona"><span id="staffPersonaLabel"></span>
+            <select id="staffPersona"></select>
+          </label>
+          <span class="staff-onduty" id="staffOnDutyBadge"></span>
+        </div>
+
+        <div class="staff-section">
+          <h3 id="staffNewHeader"></h3>
+          <div class="staff-cards" id="staffNewCards"></div>
+        </div>
+        <div class="staff-section">
+          <h3 id="staffActiveHeader"></h3>
+          <div class="staff-cards" id="staffActiveCards"></div>
+        </div>
+        <div class="staff-section">
+          <h3 id="staffDoneHeader"></h3>
+          <div class="staff-cards" id="staffDoneCards"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="modal" id="requestModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="modalTitle"></h3>
+      </div>
+      <div class="modal-meta" id="modalMeta"></div>
+      <p class="modal-text" id="modalText"></p>
+      <div class="modal-ai-note" id="modalAiNote"></div>
+
+      <div class="modal-override-label" id="modalOverrideLabel"></div>
+      <div class="modal-fields">
+        <label><span id="modalCategoryLabel"></span><select id="modalCategory"></select></label>
+        <label><span id="modalAssigneeLabel"></span><select id="modalAssignee"></select></label>
+        <label><span id="modalStatusLabel"></span><select id="modalStatus"></select></label>
+      </div>
+
+      <h4 id="requestCardHistory"></h4>
+      <div class="modal-history" id="modalHistory"></div>
+
+      <div class="modal-actions">
+        <button type="button" id="modalCloseBtn" class="ghost-btn"></button>
+        <button type="button" id="modalSaveBtn" class="primary-btn"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="aiSummaryModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="aiSummaryHeading"></h3>
+      </div>
+      <pre class="ai-summary-body" id="aiSummaryBody"></pre>
+      <div class="modal-actions">
+        <button type="button" id="aiSummaryCloseBtn" class="primary-btn"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="ai.js"></script>
+  <script src="strings.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
