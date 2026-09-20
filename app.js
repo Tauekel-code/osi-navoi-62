@@ -422,7 +422,7 @@ function renderChrome() {
   $('#tabBoardBtn').textContent = t().tabBoard;
   $('#tabDirectoryBtn').textContent = t().tabDirectory;
 
-  $('#pitchTitle').textContent = t().pitchTitle(HOUSE.name);
+  $('#pitchTitle').textContent = t().pitchTitle;
   $('#pitchLead').textContent = t().pitchLead;
   $('#pitchHintViews').textContent = t().pitchHintViews;
   const examplesWrap = $('#pitchExamples');
